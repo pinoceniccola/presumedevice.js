@@ -1,6 +1,6 @@
 {
   "name": "presumedevice-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "It's true, you can't detect touch or mouse devices. But you can make assumptions.",
   "main": "presumedevice.js",
   "scripts": {
