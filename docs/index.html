@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Presumedevice.js: Presume mouse, touch or both</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/ace-css/css/ace.min.css" rel="stylesheet">
+  
+
+
+  <style>
+  .hidden {display:none;}
+
+  .presume-no-touch .mouseonly-info {display:block;}
+  .presume-touch .touch-info {display:block;}
+  .presume-touch.presume-mouse .mouse-info {display:block;}
+  .presume-touch.presume-no-mouse .no-mouse-info {display:block;}
+  </style>
+
+</head>
+
+<body class="max-width-4 mx-auto p2">
+
+<header class="py3">
+  <h1><i class="material-icons gray" aria-hidden="true">touch_app</i><i class="material-icons gray" aria-hidden="true">mouse</i> Presumedevice.js</h1>
+  <p class="h5">It's true, you can't detect touch or mouse devices. <br>But you can make assumptions.</p>
+</header>
+
+
+<section class="py3">
+  <h3>About</h3>
+  <p>This is a tiny<sup>*</sup> JavaScript utility that tries to presume whatever the user is interacting with a touch and/or a mouse device.</p>
+  <p>By now, we all know that we can't (still) truly detect touch devices. <strong>Why make assumptions, then?</strong> As designers, most of us love to fine tune little details of our work, this utility can help us with those non-critical but equally-important UI improvements.</p>
+  <p class="h5">* ~480B when compressed and gzipped.</p>
+</section>
+
+
+<section class="py3">
+  <h3>Quick Demo</h3>
+  <p class="h5">Try this page on different devices or simulate touch/mouse events with your favorite developer tool.</p>
+
+  <div class="py2">
+    <p class="hidden mouseonly-info"><i class="material-icons align-bottom red">touch_app</i><i class="material-icons align-bottom green">mouse</i> Presuming you don't have touch capabilities and are using a mouse (as a default fallback).</p>
+
+    <p class="hidden touch-info"><i class="material-icons align-bottom green">touch_app</i> Presuming you have touch capabilities...</p>
+
+    <p class="hidden mouse-info"><i class="material-icons align-bottom green">mouse</i> ...but you are using a mouse.</p>
+
+    <p class="hidden no-mouse-info"><i class="material-icons align-bottom red">mouse</i> ...and you don't have or are not using a mouse.</p>
+  </div>
+</section>
+
+
+
+
+<section class="py3">
+  <h3>Usage</h3>
+  <p>Install & require via npm:</p>
+  <pre class="border-left border-gray pl2">npm i presumedevice-js
+...
+require('presumedevice-js');</pre>
+  <p>Or include the script the old-fashioned way:</p>
+  <pre class="border-left border-gray pl2"><<span>script</span> src="https://unpkg.com/presumedevice-js/presumedevice.min.js"><<span>/script</span>></pre>
+  <p>The utility does <strong>two simple things</strong>:</p>
+  <p>1. Adds two <abbr>CSS</abbr> classes to the <code>HTML</code> element:</p>
+    <ul>
+      <li><code>presume-touch</code> OR <code>presume-no-touch</code> AND 
+      <li><code>presume-mouse</code> OR <code>presume-no-mouse</code>
+    </ul>
+  <p>2. Fires a <code>Custom Event</code> that you can listen with:</p>
+  <pre class="border-left border-gray pl2">window.addEventListener('onPresumeDevice', function(e){
+    console.log(e.detail); // -> {presumeTouch : bool, presumeMouse: bool}
+});</pre>
+
+</section>
+
+
+
+
+<section class="py3">
+    <h3>Use responsibly + Caveats</h3>
+    <p>You should always design with both touch and mouse in mind. Also, always remember that <code>Touch != Mobile Device</code>, there are many different scenarios and the user can have <strong>both</strong> touch and a mouse.</p>
+    <p>Please, also consider that:</p>
+    <ul>
+      <li>You can't always presume everything on runtime, since this library waits for the very first user action. This means probabily a few milliseconds (mouse devices) or as long as users first touch their screens. 
+      <li>Users with both mouse and touch capabilities (think laptops with touch screens) can switch anytime between mouse or touch. This library makes assumptions only on the very first action taken by the user.
+      <li>According to <a href="https://patrickhlauke.github.io/touch/tests/results/#mobile-tablet-touchscreen-events">this table</a>, some third-party browsers for Android fire mouse events before touch events and this could lead to wrong assumptions and side effects.
+    </ul>
+</section>
+
+
+
+<footer class="py3 h5">
+  <p>&copy; 2017 Pino Ceniccola. MIT License. <a href="https://github.com/pinoceniccola/presumedevice.js">Github</a></p>
+</footer>
+
+<script src="https://unpkg.com/presumedevice-js/presumedevice.min.js"></script>
+</body>
+</html>
