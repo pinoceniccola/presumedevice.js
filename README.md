@@ -22,7 +22,7 @@ require('presumedevice-js');
 ```
 Or include the script the old-fashioned way:
 ```
-<script> src="https://unpkg.com/presumedevice-js/presumedevice.min.js"></script</>
+<script src="https://unpkg.com/presumedevice-js/presumedevice.min.js"></script>
 ```
 The utility does **two simple things**:
 
