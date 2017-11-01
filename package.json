@@ -1,0 +1,26 @@
+{
+  "name": "presumedevice-js",
+  "version": "0.1.0",
+  "description": "It's true, you can't detect touch or mouse devices. But you can make assumptions.",
+  "main": "presumedevice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "uglifyjs presumedevice.js --verbose -m -c -o presumedevice.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinoceniccola/presumedevice.js.git"
+  },
+  "keywords": [
+    "javascript",
+    "css"
+  ],
+  "author": "Pino Ceniccola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinoceniccola/presumedevice.js/issues"
+  },
+  "homepage": "https://github.com/pinoceniccola/presumedevice.js#readme",
+  "devDependencies": {
+    "uglify-js": ">=2.8.22"
+}
