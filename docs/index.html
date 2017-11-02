@@ -7,8 +7,9 @@
   <meta name="description" content="It's true, you can't detect touch or mouse devices. But you can make assumptions.">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://unpkg.com/ace-css/css/ace.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/ace-css@1.1.0/css/ace.min.css" rel="stylesheet">
   
+  <link rel="icon" type="image/png" sizes="24x24" href="assets/loading.png" id="js-favicon">
 
   <style>
   .hidden {display:none;}
@@ -99,6 +100,22 @@ require('presumedevice-js');</pre>
 </footer>
 
 <script src="https://unpkg.com/presumedevice-js/presumedevice.min.js"></script>
+
+
+<script>
+window.addEventListener('onPresumeDevice', function(e){
+    
+    var favicon = document.getElementById('js-favicon');
+
+    if (e.detail.presumeMouse) {
+      favicon.setAttribute('href', 'assets/mouse.png');
+    } else {
+      favicon.setAttribute('href', 'assets/touch.png');
+    }
+
+});
+</script>
+
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
