@@ -26,17 +26,17 @@ window.addEventListener('onPresumeDevice', function(e){
     console.log(e.detail); // -> {presumeTouch : bool, presumeMouse: bool}
 });
 ```
-**Works best with a touch-first strategy:** Since this library waits for the very first user action, **you should really use it to detect mouse instead of touch**, as the first will usually take *zero time to just milliseconds* to be detected.
+**Works best with a touch-first strategy:** This library waits for the very first user action, so **you should really use it to detect mouse instead of touch**, as the first will usually take *zero time* (no touch events) to *just milliseconds* (any mouse movement or scroll) to be detected.
 
 #### Example
 
-Let's say your idea is to add extra padding to buttons when users are interacting with touch devices. Using a touch-first strategy, in CSS you do this instead:
+Let's say the idea is to add extra padding to buttons when users are interacting with touch devices. Using a touch-first strategy, in CSS you do this instead:
 
 ```css
 /* touch-first approach, style for touch devices first */
 .buttons {padding:1rem 2rem}
 
-/* if user is interacting with a mouse, reduce the padding: */
+/* if user is interacting with a mouse, decrease padding: */
 .presume-mouse .buttons {padding:0.2rem 0.5rem}
 ```
 
